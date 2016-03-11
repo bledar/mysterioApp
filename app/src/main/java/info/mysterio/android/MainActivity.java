@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     String url;
     String username;
     String password;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
