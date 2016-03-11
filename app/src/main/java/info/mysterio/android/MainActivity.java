@@ -1,17 +1,18 @@
 package info.mysterio.android;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.webkit.URLUtil;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.Toast;
+
+    import android.content.Intent;
+    import android.content.SharedPreferences;
+    import android.support.v7.app.AppCompatActivity;
+    import android.os.Bundle;
+    import android.util.Log;
+    import android.view.Menu;
+    import android.view.MenuInflater;
+    import android.view.MenuItem;
+    import android.webkit.URLUtil;
+    import android.webkit.WebSettings;
+    import android.webkit.WebView;
+    import android.webkit.WebViewClient;
+    import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             Toast.makeText(getApplicationContext(),"Url e dhene nuk eshte e sakte" , Toast.LENGTH_LONG).show();
         }
-        Log.e("Devel",url);
+        Log.d("bledi", url);
     }
 
     private class Callback extends WebViewClient {
@@ -46,6 +47,19 @@ public class MainActivity extends AppCompatActivity {
             return (false);
         }
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        url =opsione.getString("url", "error");
+        if(URLUtil.isValidUrl(url)){
+            webi.loadUrl(url);
+
+        }else{
+            Toast.makeText(getApplicationContext(),"Url e dhene nuk eshte e sakte" , Toast.LENGTH_LONG).show();
+        }
+        Log.d("bledi","Rikthy ne aktivitetin baze");
     }
 
     @Override
